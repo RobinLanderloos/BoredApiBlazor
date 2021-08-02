@@ -16,6 +16,7 @@ namespace BoredApi.Pages
         private ActivityResponse solution;
         private string selectedType = "";
         private int participants;
+        private string loading;
 
         private PriceRange selectedMinPrice = new();
         private PriceRange selectedMaxPrice = new();
@@ -40,10 +41,19 @@ namespace BoredApi.Pages
 
         private async Task CureBoredom()
         {
+            loading = "Finding your cure...";
+
             StringBuilder builder = new("?");
-            builder.Append($"minprice={selectedMinPrice.Price}&maxprice={selectedMaxPrice.Price}");
-            builder.Append('&');
-            builder.Append($"minaccessibility={selectedMinAccessibilityRange.Accessibility}&maxaccessibility={selectedMaxAccessibilityRange.Accessibility}");
+            if(selectedMinPrice.Id > 0 || selectedMaxPrice.Id > 0)
+            {
+                builder.Append($"minprice={selectedMinPrice.Price}&maxprice={selectedMaxPrice.Price}");
+            }
+            if(selectedMinAccessibilityRange.Id > 0 || selectedMaxAccessibilityRange.Id > 0)
+            {
+
+                builder.Append('&');
+                builder.Append($"minaccessibility={selectedMinAccessibilityRange.Accessibility}&maxaccessibility={selectedMaxAccessibilityRange.Accessibility}");
+            }
             if(participants > 0)
             {
                 builder.Append('&');
@@ -127,5 +137,7 @@ namespace BoredApi.Pages
 
             return "https://www.google.com";
         }
+
+        private void ClearFilters() { }
     }
 }

@@ -1,4 +1,4 @@
-﻿@page "/bored"
+﻿@page "/"
 @inject HttpClient Http
 @inject IJSRuntime JSRuntime
 
@@ -20,7 +20,7 @@
             </div>
             <div class="col">
                 <label>Participants</label>
-                <input type="number" @bind-value="participants" class="form-control"/>
+                <input type="number" @bind-value="participants" class="form-control" />
             </div>
         </div>
         <div class="row mt-3 mb-3">
@@ -69,7 +69,8 @@
                 </div>
             </div>
         </div>
-        <button class="btn btn-primary" @onclick="CureBoredom">Cure your boredom!</button>
+        <button class="btn btn-primary float-md-left" @onclick="CureBoredom">Cure your boredom!</button>
+        <button class="btn btn-danger float-md-right" @oncanplay="ClearFilters">Clear</button>
     </div>
 </div>
 
@@ -115,4 +116,15 @@
             }
         </div>
     </div>
+}
+else
+{
+    if (!string.IsNullOrEmpty(loading))
+    {
+        <div class="card mt-5">
+            <div class="card-body">
+                <h5 class="card-title">@loading</h5>
+            </div>
+        </div>
+    }
 }
