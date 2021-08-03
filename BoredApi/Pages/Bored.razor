@@ -2,129 +2,20 @@
 @inject HttpClient Http
 @inject IJSRuntime JSRuntime
 
-<h1>Are you bored?</h1>
+<Animate Animation="Animations.FadeIn" Duration="TimeSpan.FromSeconds(1)">
+    <ActivityCriteriaCard @bind-Activities="Activities" />
+</Animate>
 
-<div class="card">
-    <div class="card-body">
-        <h5 class="card-title">Criteria</h5>
-        <hr />
-        <div class="row">
-            <div class="col">
-                <label>Type</label>
-                <select @onchange="TypeSelected" class="form-control">
-                    @foreach (var type in types)
-                    {
-                        <option>@type</option>
-                    }
-                </select>
-            </div>
-            <div class="col">
-                <label>Participants</label>
-                <input type="number" @bind-value="participants" class="form-control" />
-            </div>
-        </div>
-        <div class="row mt-3 mb-3">
-            <div class="col">
-                <div class="row">
-                    <div class="col">
-                        <label>Minimum price</label>
-                        <select @onchange="MinPriceSelected" class="form-control" @ref="minPriceSelect">
-                            @foreach (var priceRange in priceRanges)
-                            {
-                                <option value="@priceRange.Id">@priceRange.Name</option>
-                            }
-                        </select>
-                    </div>
-                    <div class="col">
-                        <label>Maximum price</label>
-                        <select @onchange="MaxPriceSelected" class="form-control" @ref="maxPriceSelect">
-                            @foreach (var priceRange in priceRanges)
-                            {
-                                <option value="@priceRange.Id">@priceRange.Name</option>
-                            }
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="row">
-                    <div class="col">
-                        <label>Minimum accessibility</label>
-                        <select @onchange="MinAccessibilitySelected" class="form-control" @ref="minAccessibilitySelect">
-                            @foreach (var accessibilityRange in accessibilityRanges)
-                            {
-                                <option value="@accessibilityRange.Id">@accessibilityRange.Name</option>
-                            }
-                        </select>
-                    </div>
-                    <div class="col">
-                        <label>Maximum accessibility</label>
-                        <select @onchange="MaxAccessibilitySelected" class="form-control" @ref="maxAccessibilitySelect">
-                            @foreach (var accessibilityRange in accessibilityRanges)
-                            {
-                                <option value="@accessibilityRange.Id">@accessibilityRange.Name</option>
-                            }
-                        </select>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <button class="btn btn-primary float-md-left" @onclick="CureBoredom">Cure your boredom!</button>
-        <button class="btn btn-danger float-md-right" @oncanplay="ClearFilters">Clear</button>
-    </div>
-</div>
-
-@if (solution != null)
+@if (Activities != null && Activities.Any())
 {
-
-    <div class="card mt-5">
-        <div class="card-body">
-            @if (!solution.HasError)
-            {
-                <h5 class="card-title">@solution.Activity</h5>
-                <h6 class="card-subtitle mb-2 text-muted">@solution.Type</h6>
-                <div class="row">
-                    <div class="col">
-                        <label>@nameof(solution.Participants)</label>
-                        <input readonly class="form-control" value="@solution.Participants" />
-                    </div>
-                    <div class="col">
-                        <label>@nameof(solution.Price)</label>
-                        <input readonly class="form-control" value="@solution.Price" />
-                    </div>
-                    <div class="col">
-                        <label>@nameof(solution.Accessibility)</label>
-                        <input readonly class="form-control" value="@solution.Accessibility" />
-                    </div>
-                </div>
-                <div class="row mt-3">
-                    <div class="col">
-                        @if (!string.IsNullOrEmpty(solution.Link))
-                        {
-                            <a href="@solution.Link" target="_blank">@solution.Link</a>
-                        }
-                        else
-                        {
-                            <a href="@GenerateHowToLink(solution.Activity)" target="_blank">How To</a>
-                        }
-                    </div>
-                </div>
-            }
-            else
-            {
-                <h5 class="card-title">@solution.Error</h5>
-            }
-        </div>
-    </div>
-}
-else
-{
-    if (!string.IsNullOrEmpty(loading))
-    {
-        <div class="card mt-5">
-            <div class="card-body">
-                <h5 class="card-title">@loading</h5>
+    <div class="row">
+        @foreach (var activity in Activities)
+        {
+            <div class="col-md-6 w-h-animation">
+                <Animate Animation="Animations.SlideLeft" Duration="TimeSpan.FromSeconds(1)">
+                    <ActivityCard Activity="activity" />
+                </Animate>
             </div>
-        </div>
-    }
+        }
+    </div>
 }
