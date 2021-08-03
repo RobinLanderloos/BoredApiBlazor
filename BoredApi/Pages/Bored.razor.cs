@@ -48,7 +48,7 @@ namespace BoredApi.Pages
             {
                 builder.Append($"minprice={selectedMinPrice.Price}&maxprice={selectedMaxPrice.Price}");
             }
-            if(selectedMaxAccessibilityRange.Accessibility)
+            if(selectedMaxAccessibilityRange.Accessibility > 0)
             {
 
                 builder.Append('&');
