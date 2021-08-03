@@ -12,6 +12,10 @@ namespace BoredApi.Components
     {
         [Parameter]
         public ActivityResponse Activity { get; set; }
+        [Parameter]
+        public EventCallback<int> OnFavourite { get; set; }
+
+        private bool isFavourite = false;
 
         private string GenerateHowToLink(string activity)
         {
@@ -22,6 +26,12 @@ namespace BoredApi.Components
             }
 
             return "https://www.google.com";
+        }
+
+        private async Task Favourite()
+        {
+            isFavourite = !isFavourite;
+            await OnFavourite.InvokeAsync();
         }
     }
 }

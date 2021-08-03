@@ -4,7 +4,21 @@
         <div class="card-body">
             @if (!Activity.HasError)
             {
-                <h5 class="card-title">@Activity.Activity</h5>
+                <div class="card-title row">
+                    <h5 class="col-sm-10">@Activity.Activity</h5>
+                    @if (!isFavourite)
+                    {
+                        <span class="col-sm-2">
+                            <i @onclick="Favourite" class="fas fa-star hover-pointer"></i>
+                        </span>
+                    }
+                    else
+                    {
+                        <span class="col-sm-2 yellow-with-outline">
+                            <i @onclick="Favourite" class="fas fa-star hover-pointer"></i>
+                        </span>
+                    }
+                </div>
                 <h6 class="card-subtitle mb-2 text-muted">@Activity.Type</h6>
                 <div class="row">
                     <div class="col">
