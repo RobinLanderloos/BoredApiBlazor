@@ -1,4 +1,7 @@
 /* /Pages/Bored.razor.rz.scp.css */
+.w-h-animation[b-q7k2huh9k1] {
+    transition: width 2s, height 4s;
+}
 /* /Shared/MainLayout.razor.rz.scp.css */
 .page[b-ekqqvwr9qq] {
     position: relative;
