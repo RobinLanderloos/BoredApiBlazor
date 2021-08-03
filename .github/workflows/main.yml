@@ -24,13 +24,13 @@ jobs:
 
       # sets up .NET Core SDK 3.1
       - name: Setup .NET Core SDK
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@v1.6.0
         with:
           dotnet-version: 3.1
 
       # Publishes Blazor project to the release-folder
       - name: Publish .NET Core Project
-        run: dotnet publish BoredApi.csproj -c Release -o release --nologo
+        run: dotnet publish ./BoredApi.csproj -c Release -o release --nologo
         
       - name: Commit wwwroot to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@3.7.1
