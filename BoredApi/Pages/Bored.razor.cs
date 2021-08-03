@@ -44,11 +44,11 @@ namespace BoredApi.Pages
             loading = "Finding your cure...";
 
             StringBuilder builder = new("?");
-            if(selectedMaxPrice.Id > 0)
+            if(selectedMaxPrice.Price > 0)
             {
                 builder.Append($"minprice={selectedMinPrice.Price}&maxprice={selectedMaxPrice.Price}");
             }
-            if(selectedMaxAccessibilityRange.Id > 0)
+            if(selectedMaxAccessibilityRange.Accessibility)
             {
 
                 builder.Append('&');
