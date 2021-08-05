@@ -11,7 +11,7 @@
         {
             <div class="col-md-6">
                 <Animate Animation="Animations.SlideLeft" Duration="TimeSpan.FromSeconds(1)">
-                    <ActivityCard Activity="activity" OnFavourite="() => HandleFavourite(activity)"/>
+                    <ActivityCard Activity="activity" OnFavourite="() => HandleFavourite(activity)" IsFavourite="false"/>
                 </Animate>
             </div>
         }
@@ -30,7 +30,7 @@ else
         {
             <div class="col-md-6">
                 <Animate Animation="Animations.SlideLeft" Duration="TimeSpan.FromSeconds(1)">
-                    <ActivityCard Activity="activity" />
+                    <ActivityCard Activity="activity" OnFavourite="() => HandleFavourite(activity)" IsFavourite="true"/>
                 </Animate>
             </div>
         }

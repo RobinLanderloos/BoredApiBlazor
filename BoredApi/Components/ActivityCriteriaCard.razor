@@ -20,8 +20,8 @@
                 <input type="number" @bind-value="participants" class="form-control" />
             </div>
         </div>
-        <div class="row mt-3 mb-3">
-            <div class="col">
+        <div class="row mt-3">
+            <div class="col-sm-12 mt-3">
                 <div class="row">
                     <div class="col">
                         <label>Minimum price</label>
@@ -43,7 +43,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col">
+            <div class="col col-sm-12 mt-3">
                 <div class="row">
                     <div class="col">
                         <label>Minimum accessibility</label>
@@ -66,14 +66,16 @@
                 </div>
             </div>
         </div>
-        @if (!gettingActivities)
-        {
-            <button class="btn btn-primary float-md-left" @onclick="CureBoredom">Cure your boredom!</button>
-        }
-        else
-        {
-            <button disabled class="btn btn-primary float-md-left" @onclick="CureBoredom">Cure your boredom!</button>
-        }
-        <button class="btn btn-danger float-md-right" @oncanplay="ClearFilters">Clear</button>
+        <div class="mt-3">
+            @if (!gettingActivities)
+            {
+                <button class="btn btn-primary float-md-left" @onclick="CureBoredom">Cure your boredom!</button>
+            }
+            else
+            {
+                <button disabled class="btn btn-primary float-md-left" @onclick="CureBoredom">Cure your boredom!</button>
+            }
+            @*<button class="btn btn-danger float-md-right" @oncanplay="ClearFilters">Clear</button>*@
+        </div>
     </div>
 </div>

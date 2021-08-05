@@ -1,4 +1,5 @@
-﻿using BoredApi.Models;
+﻿using BoredApi.Helpers;
+using BoredApi.Models;
 using Microsoft.AspNetCore.Components;
 using System;
 using System.Collections.Generic;
@@ -14,8 +15,17 @@ namespace BoredApi.Components
         public ActivityResponse Activity { get; set; }
         [Parameter]
         public EventCallback<int> OnFavourite { get; set; }
+        [Parameter]
+        public bool IsFavourite { get; set; } = false;
 
-        private bool isFavourite = false;
+        private Dictionary<float, string> PriceDictionary;
+        private Dictionary<float, string> AccessibilityDictionary;
+
+        protected override void OnInitialized()
+        {
+            PriceDictionary = BoredApiLists.PriceRanges.ToDictionary(x => x.Price, x => x.Name);
+            AccessibilityDictionary = BoredApiLists.AccessibilityRanges.ToDictionary(x => x.Accessibility, x => x.Name);
+        }
 
         private string GenerateHowToLink(string activity)
         {
@@ -30,7 +40,7 @@ namespace BoredApi.Components
 
         private async Task Favourite()
         {
-            isFavourite = !isFavourite;
+            IsFavourite = !IsFavourite;
             await OnFavourite.InvokeAsync();
         }
     }

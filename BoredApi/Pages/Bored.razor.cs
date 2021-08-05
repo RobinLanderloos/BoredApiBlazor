@@ -13,10 +13,12 @@ namespace BoredApi.Pages
             if(activity != null && !FavouriteActivities.Contains(activity))
             {
                 FavouriteActivities.Add(activity);
+                Activities.Remove(activity);
             }
             else if (FavouriteActivities.Contains(activity))
             {
                 FavouriteActivities.Remove(activity);
+                Activities.Add(activity);
             }
         }
     }
