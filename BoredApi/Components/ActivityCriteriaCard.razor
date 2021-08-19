@@ -1,0 +1,81 @@
+﻿@inject HttpClient Http
+@inject IJSRuntime JSRuntime
+
+<div class="card">
+    <div class="card-body">
+        <h2 class="card-title">Find a solution to your boredom here!</h2>
+        <hr />
+        <div class="row">
+            <div class="col">
+                <label>Type</label>
+                <select @onchange="TypeSelected" class="form-control">
+                    @foreach (var type in types)
+                    {
+                        <option>@type</option>
+                    }
+                </select>
+            </div>
+            <div class="col">
+                <label>Participants</label>
+                <input type="number" @bind-value="participants" class="form-control" />
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-sm-12 mt-3">
+                <div class="row">
+                    <div class="col">
+                        <label>Minimum price</label>
+                        <select @onchange="MinPriceSelected" class="form-control" @ref="minPriceSelect">
+                            @foreach (var priceRange in priceRanges)
+                            {
+                                <option value="@priceRange.Id">@priceRange.Name</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label>Maximum price</label>
+                        <select @onchange="MaxPriceSelected" class="form-control" @ref="maxPriceSelect">
+                            @foreach (var priceRange in priceRanges)
+                            {
+                                <option value="@priceRange.Id">@priceRange.Name</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-sm-12 mt-3">
+                <div class="row">
+                    <div class="col">
+                        <label>Minimum accessibility</label>
+                        <select @onchange="MinAccessibilitySelected" class="form-control" @ref="minAccessibilitySelect">
+                            @foreach (var accessibilityRange in accessibilityRanges)
+                            {
+                                <option value="@accessibilityRange.Id">@accessibilityRange.Name</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label>Maximum accessibility</label>
+                        <select @onchange="MaxAccessibilitySelected" class="form-control" @ref="maxAccessibilitySelect">
+                            @foreach (var accessibilityRange in accessibilityRanges)
+                            {
+                                <option value="@accessibilityRange.Id">@accessibilityRange.Name</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mt-3">
+            @if (!gettingActivities)
+            {
+                <button class="btn btn-primary float-md-left" @onclick="CureBoredom">Cure your boredom!</button>
+            }
+            else
+            {
+                <button disabled class="btn btn-primary float-md-left" @onclick="CureBoredom">Cure your boredom!</button>
+            }
+            @*<button class="btn btn-danger float-md-right" @oncanplay="ClearFilters">Clear</button>*@
+        </div>
+    </div>
+</div>

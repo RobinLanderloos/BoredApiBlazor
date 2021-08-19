@@ -31,8 +31,8 @@ jobs:
       # Publishes Blazor project to the release-folder
       - name: Publish .NET Core Project
         run: dotnet publish -c Release --output release
-      - name: Change base-tag in index.html from / to BlazorGitHubPagesDemo
-        run: sed -i 's/<base href="\/" \/>/<base href="\/BlazorGitHubPagesDemo\/" \/>/g' release/wwwroot/index.html
+      - name: Change base-tag in index.html from / to BoredApiBlazor
+        run: sed -i 's/<base href="\/" \/>/<base href="\/BoredApiBlazor\/" \/>/g' release/wwwroot/index.html
     
       # copy index.html to 404.html to serve the same file when a file is not found
       - name: copy index.html to 404.html
