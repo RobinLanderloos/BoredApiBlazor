@@ -4,6 +4,12 @@
     cursor: pointer;
 }
 
+.yellow-with-outline {
+    -webkit-text-fill-color: orange;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: orange;
+}
+
 /*Standard blazor CSS*/
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;

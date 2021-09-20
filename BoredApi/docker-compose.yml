@@ -1,0 +1,11 @@
+﻿services:
+  bored-api:
+    image: robinlanderloos/bored-api:latest
+    container_name: bored-api
+    ports:
+      - "3000:80"
+    restart: unless-stopped
+networks:
+  default:
+    external:
+      name: main-network

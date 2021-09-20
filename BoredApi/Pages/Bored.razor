@@ -1,6 +1,5 @@
 ﻿@page "/"
-
-<Animate Animation="Animations.FadeIn" Duration="TimeSpan.FromSeconds(1)">
+<Animate Animation="Animations.FadeIn" Duration="TimeSpan.FromSeconds(0.5)">
     <ActivityCriteriaCard @bind-Activities="Activities" />
 </Animate>
 
@@ -10,7 +9,7 @@
         @foreach (var activity in Activities)
         {
             <div class="col-md-6">
-                <Animate Animation="Animations.SlideLeft" Duration="TimeSpan.FromSeconds(1)">
+                <Animate Animation="Animations.FadeIn" Duration="TimeSpan.FromSeconds(0.2)">
                     <ActivityCard Activity="activity" OnFavourite="() => HandleFavourite(activity)" IsFavourite="false"/>
                 </Animate>
             </div>
@@ -29,7 +28,7 @@ else
         @foreach (var activity in FavouriteActivities)
         {
             <div class="col-md-6">
-                <Animate Animation="Animations.SlideLeft" Duration="TimeSpan.FromSeconds(1)">
+                <Animate Animation="Animations.FadeIn" Duration="TimeSpan.FromSeconds(0.2)">
                     <ActivityCard Activity="activity" OnFavourite="() => HandleFavourite(activity)" IsFavourite="true"/>
                 </Animate>
             </div>
