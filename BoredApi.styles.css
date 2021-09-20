@@ -1,7 +1,10 @@
 /* /Components/ActivityCard.razor.rz.scp.css */
-.yellow-with-outline[b-ip99uqdtg0] {
-    color: yellow;
+/*.yellow-with-outline {
+    -webkit-text-fill-color: orange;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: orange;
 }
+*/
 /* /Pages/Bored.razor.rz.scp.css */
 .w-h-animation[b-q7k2huh9k1] {
     transition: width 2s, height 4s;
